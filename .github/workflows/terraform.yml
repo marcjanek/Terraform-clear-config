@@ -8,14 +8,14 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-      
+    
     - name: download Terraform
-      run: wget https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip
-    - name: unzip Terraform
-      run: unzip terraform_0.12.25_linux_amd64.zip
-    - name: test Terraform
-      run: terraform -version
-    - name: terraform init
-      run: terraform init
+      run: |
+        wget https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip
+        unzip terraform_0.12.25_linux_amd64.zip
+        terraform -version
+    
     - name: validate
-      run: terraform validate
+      run: |
+        terraform init
+        terraform validate
